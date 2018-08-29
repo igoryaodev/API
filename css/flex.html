@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 ">
+  <title>flex</title>
+  <style>
+    html, body {
+      padding: 0;
+      margin:0; 
+      /*
+        @body一般情况默认margin:8px
+      */
+    }
+    .page {
+
+    }
+    .page-bg:nth-child(odd) {
+      background-color: #d6e3e8;
+    }
+    .page-bg:nth-child(even) {
+      background-color: #d6e8e2;
+    }
+    .page-1, .page-2 {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    .page-3{
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+    .page-1::after {
+      content: ' ';
+    }
+    .description {
+      display: flex;
+      justify-content: center;
+    }
+    .page header{
+      width: 100%;
+    }
+    .page .menu {
+      display: flex;
+      width: 100%;
+    }
+    .page .menu>.nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      /*
+        @ul, menu, dir默认
+        list-style-type: disc; // 
+        -webkit-margin-before: 1em; // 相当于margin-top: 1em;
+        -webkit-margin-after: 1em; // margin-bottom: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 40px; // padding-left: 40px;
+      */
+      display: flex;
+      width: 100%;
+    }
+    .page .menu>.nav>.nav-item {
+      flex: 1;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #fff;
+      color: #fff;
+    }
+    .page .menu>.nav>.nav-item span{
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      height: 50px;
+    }
+    .page .menu>.nav>.nav-item.active span{
+      color: #ff4891;
+      border-bottom: 2px solid #ff4891; 
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="page page-bg">
+    <header>
+      <section class="menu">
+        <ul class="nav">
+          <li class="nav-item active"><span>首页</span></li>
+          <li class="nav-item"><span>会员</span></li>
+          <li class="nav-item"><span>发现</span></li>
+          <li class="nav-item"><span>购物车</span></li>
+          <li class="nav-item"><span>我的</span></li>
+        </ul>
+      </section>
+      <section class="header-ad">
+        <div class="swiper">
+          <img class="slider" src="./image/home/banner (1).jpg" alt="">
+          <img class="slider" src="./image/home/banner (2).jpg" alt="">
+          <img class="slider" src="./image/home/banner (3).jpg" alt="">
+          <img class="slider" src="./image/home/banner (4).jpg" alt="">
+        </div>
+      </section>
+    </header>
+  </div>
+  <div class="page-1 page-bg">
+    
+  </div>
+  <p class="description">page-1, page-2 什么也没有</p>
+  <div class="page-2 page-bg">
+    
+  </div>
+  <span class="page-3 page-bg">
+    
+  </span>
+
+  <script>
+   function swiper() {
+    if(!window || !document) return
+    let doc = document,
+        _swiper = doc.querySelectorAll('swiper'),
+        _touchStart, // 触摸
+        _touchMove,  // 触摸移动
+        _touchEnd,  // 触摸结束
+        _X = 0,     // X轴移动距离
+        _Y = 0,
+        X = 0,      // X轴绝对距离
+        Y = 0,
+        offsetOld = 0,
+        offset = 0;  //便宜距离
+         debugger
+
+        if(!_swiper || !_swiper[0]) return
+        for(let i = 0; i < _swiper.length; i++) {
+         swiper[i] 
+         debugger
+        }
+
+    
+   }
+   if(document.readyState === 'complete') {
+debugger
+   new swiper()
+   }
+   let status = []
+   // status.push(document.readyState)
+   // console.log(status)
+   new Promise().all(['loading', 'complete']).then((reject, resolve) => {
+    debugger
+   })
+  </script> 
+</body>
+</html>
