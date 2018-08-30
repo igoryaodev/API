@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>for</title>
+</head>
+<body>
+  
+  <script>
+    var i= 0, timer = setInterval(() => {
+      console.log(i)
+      i++
+      if(i == 5) clearInterval(timer)
+    }, 100)
+    // for(var i = 0; i < 5; i++)
+    //   console.log(i)
+    // for(var j =0; j < 5; ++j)
+    //   console.log('j ' + j )
+
+    // console.log('i--- ' + i)
+    // console.log('\nj--- ' + j)
+    // for(var i = 0; i < 5; i++)
+    //   ((j) => console.log('\nclosure---' + j))(i)
+  </script>
+</body>
+</html>

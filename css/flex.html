@@ -141,16 +141,18 @@
 
     
    }
-   if(document.readyState === 'complete') {
-debugger
-   new swiper()
-   }
-   let status = []
+   let timer = setInterval(() => {
+     if(document.readyState === 'complete') {
+      new swiper()
+      return clearInterval(timer)
+     }
+   }, 100)
+   // let status = []
    // status.push(document.readyState)
    // console.log(status)
-   new Promise().all(['loading', 'complete']).then((reject, resolve) => {
-    debugger
-   })
+   // new Promise().all(['loading', 'complete']).then((reject, resolve) => {
+    // debugger
+   // <!-- }) -->
   </script> 
 </body>
 </html>
