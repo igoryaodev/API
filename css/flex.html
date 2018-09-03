@@ -12,8 +12,11 @@
         @body一般情况默认margin:8px
       */
     }
+    img{
+      width: 100%;
+      height: auto;
+    }
     .page {
-
     }
     .page-bg:nth-child(odd) {
       background-color: #d6e3e8;
@@ -130,29 +133,29 @@
         X = 0,      // X轴绝对距离
         Y = 0,
         offsetOld = 0,
-        offset = 0;  //便宜距离
-         debugger
+        offset = 0;  //偏移距离
+         // debugger
 
         if(!_swiper || !_swiper[0]) return
         for(let i = 0; i < _swiper.length; i++) {
          swiper[i] 
-         debugger
+         // debugger
         }
 
     
    }
-   let timer = setInterval(() => {
-     if(document.readyState === 'complete') {
-      new swiper()
-      return clearInterval(timer)
-     }
-   }, 100)
-   // let status = []
-   // status.push(document.readyState)
-   // console.log(status)
-   // new Promise().all(['loading', 'complete']).then((reject, resolve) => {
-    // debugger
-   // <!-- }) -->
+   /*
+   * @document onReady
+   */
+  document && document instanceof Object ? 0 : document = {}
+  document.__proto__.onReady = function(){}
+  let timer = setInterval(() => {
+    if(document && document.readyState === 'complete') return clearInterval(timer), document.onReady()
+  }, 100)
+  document.onReady = function() {
+    new swiper()
+  }
+
   </script> 
 </body>
 </html>

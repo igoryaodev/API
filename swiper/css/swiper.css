@@ -1,0 +1,15 @@
+.swiper-wrap{
+  width: 100vw;
+  overflow-x: hidden;
+}
+.slider{
+  width: 100vw;
+  float: left;
+  display: none;
+}
+.slider:first-child{
+  display: block;
+}
+.swiper.active .slider{
+  display: block;
+}
