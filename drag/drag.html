@@ -8,6 +8,8 @@
       padding: 0;
       margin: 0;
       background-color: #f5f5f5;
+      /*width: 100%;*/
+
     }
     #column,
     #grid{
@@ -40,8 +42,11 @@
     }
 
     #grid{
+      /*width: 100%;*/
       display: grid;
-      grid-template-columns: auto auto auto auto auto; /*5列*/
+      /*grid-template-columns: auto auto auto auto auto; 5列*/
+      grid-template-columns: 20% 20% 20% 20% 20%; /*5列*/
+      -webkit-grid-template-columns: 20% 20% 20% 20% 20%; /*5列*/
       grid-gap: 0;
     }
     #grid .item{
@@ -53,62 +58,15 @@
   <div id="column"></div>
   <div id="grid"></div>
   <script>
-    let list = [
-      {
-        id: 0,
-        sortId: 0,
-        text: 0,
+    let list = []
+    for(let i = 0; i <= 14; i++) {
+      list.push({
+        id: i,
+        sortId: i,
+        text: i,
         name: 'item'
-      },
-      {
-        id: 1,
-        sortId: 1,
-        text: 1,
-        name: 'item'
-      },
-      {
-        id: 2,
-        sortId: 2,
-        text: 2,
-        name: 'item'
-      },
-      {
-        id: 3,
-        sortId: 3,
-        text: 3,
-        name: 'item'
-      },
-      {
-        id: 4,
-        sortId: 4,
-        text: 4,
-        name: 'item'
-      },
-      {
-        id: 5,
-        sortId: 5,
-        text: 5,
-        name: 'item'
-      },
-      {
-        id: 6,
-        sortId: 6,
-        text: 6,
-        name: 'item'
-      },
-      {
-        id: 7,
-        sortId: 7,
-        text: 7,
-        name: 'item'
-      },
-      {
-        id: 8,
-        sortId: 8,
-        text: 8,
-        name: 'item'
-      }
-    ]
+      })
+    }
     let htmlDragList = list.map(item => 
       `<div class="item" id="${item.sortId}" 
         data-sortId="${item.sortId}"
@@ -123,7 +81,6 @@
       }
     }, 100)
     const _insertHtml = function(selector, html) {
-      if(!selector) return
       return document.querySelector(selector).innerHTML = html
     }
     const _mount = function() {
@@ -131,16 +88,13 @@
       _insertHtml('#grid', htmlDragList)
     }
     const _dragstart = function(element){ //当拖动操作开始时运行脚本
-      if(!element) return
-      element.setAttribute('draggable', true)
       element.addEventListener('dragstart', (event) => {
         const id = event.dataTransfer.setData("Text",event.target.id)
         console.log('setData', event.target.id)
       }, null)
     }
     const _setAttribute = function(element){
-      if(!element) return
-      element.setAttribute('draggable', true)
+      return element.setAttribute('draggable', true)
     }
     const _drag= function() { //当拖动元素时运行脚本
       
@@ -149,14 +103,13 @@
       
     }
     const _dragover = function(element) {//当元素被拖动至有效拖放目标上方时运行脚本
-      if(!element) return
       element.addEventListener('dragover', (event) => {
         event.preventDefault()
+
       }, null)
 
     }
     const _dragend = function(element) { //当拖动操作结束时运行脚本
-      if(!element) return
       element.addEventListener('dragend', (event) => {
         event.preventDefault()
       }, null)
@@ -165,23 +118,22 @@
 
     }
     const _drop = function(element) {//当被拖动元素正在被拖放时运行脚本
-      if(!element) return
-      element.addEventListener('drop', (event) => {
+      element.addEventListener('drop', (event) => { //
         event.preventDefault()
-        // event.target.before(document.getElementById(event.dataTransfer.getData('Text')))
-        event.target.after(document.getElementById(event.dataTransfer.getData('Text')))
+        event.target.before(document.getElementById(event.dataTransfer.getData('Text')))
+        // event.target.after(document.getElementById(event.dataTransfer.getData('Text')))
         console.log('_drop',event.target.id)
 
       }, null)
     }
     const _selector = function(selector) {
-      if(!selector) return
       return document.querySelector(selector).children
     }
     const _handleBind = function(selector) {
+      if(!selector) return
       const elements = _selector(selector)
       if(!elements && !elements[0]) return
-      for(ele of elements) {
+      for(let ele of elements) {
         if(!ele.tagName) continue
         _dragstart(ele)
         _setAttribute(ele)

@@ -4,14 +4,27 @@
   <meta charset="UTF-8">
   <title>test</title>
 </head>
+<style>
+  .item {
+    background: blue;
+    width: 100px;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 <body>
-  
+  <div class="flex">
+    <div class="item">123</div>
+  </div>
   <script>
     function Product(name, price, description) {
       this.name = name;
       this.price = price;
       this.description= description;
-      debugger
+      // debugger
   }
   let oneYearCard = new Product('秦桥云阅读年卡', 300, '秦桥云阅读卡，免费畅读一年畅读类书籍')
   </script>

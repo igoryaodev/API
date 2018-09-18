@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>column</title>
+</head>
+<style>
+  html,body{
+    margin: 0;
+    padding: 0;
+  }
+  #column{
+    display: column;
+    column-gap: 10px;
+    -webkit-column-gap: 10px;
+    column-count: 5;
+    -webkit-column-count: 5;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  #column .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 30px;
+    height: 200px;
+    background-color: lightgreen;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+    margin-bottom: 10px; 
+  }
+  #column .item:nth-child(1){
+    height: 220px;
+  }
+  #column .item:nth-child(4){
+    height: 240px;
+  }
+  #column .item:nth-child(5){
+    height: 140px;
+  }
+  #column .item:nth-child(7){
+    height: 340px;
+  }
+  #column .item:nth-child(9){
+    height: 540px;
+  }
+  #column .item:nth-child(14){
+    height: 80px;
+  }
+</style>
+<body>
+  <div id="column"></div>
+  
+  <script src="../mock.js"></script>
+  <script src="../doc-ready.js"></script>
+  <script>
+    const htmlString = function() {
+      return list ? list.map(item => 
+        `<div class="item" id="${item.sortId}" 
+          data-sortId="${item.sortId}"
+          data-id="${item.id}">
+          ${item.text}
+        </div>`).join('') : null
+    }
+    const _insertHtml = function(selector, html) {
+      return selector ? document.querySelector(selector).innerHTML = html : 0
+    }
+    const _mount = function(selector) {
+      return selector ? _insertHtml(selector, htmlString()) : 0
+    }
+    document.onReady = function() {
+      _mount('#column')
+    }
+  </script>
+</body>
+</html>

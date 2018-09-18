@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>grid</title>
+</head>
+<style>
+  html,body{
+    margin: 0;
+    padding: 0;
+  }
+  #grid{
+    display: grid;
+    grid-gap: 10px;
+    -webkit-grid-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+    -webkit-grid-template-columns: auto auto auto auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  #grid .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 30px;
+    height: 200px;
+    background-color: lightgreen;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+    margin-bottom: 10px; 
+  }
+  #grid .item:nth-child(1){
+    height: 220px;
+  }
+  #grid .item:nth-child(4){
+    height: 240px;
+  }
+  #grid .item:nth-child(5){
+    height: 140px;
+  }
+  #grid .item:nth-child(7){
+    height: 340px;
+  }
+  #grid .item:nth-child(9){
+    height: 540px;
+  }
+  #grid .item:nth-child(14){
+    height: 80px;
+  }
+</style>
+<body>
+  <div id="grid"></div>
+  
+  <script src="../mock.js"></script>
+  <script src="../doc-ready.js"></script>
+  <script>
+    const htmlString = function() {
+      return list ? list.map(item => 
+        `<div class="item" id="${item.sortId}" 
+          data-sortId="${item.sortId}"
+          data-id="${item.id}">
+          ${item.text}
+        </div>`).join('') : null
+    }
+    const _insertHtml = function(selector, html) {
+      return selector ? document.querySelector(selector).innerHTML = html : 0
+    }
+    const _mount = function(selector) {
+      return selector ? _insertHtml(selector, htmlString()) : 0
+    }
+    document.onReady = function() {
+      _mount('#grid')
+    }
+  </script>
+</body>
+</html>

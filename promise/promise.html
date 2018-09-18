@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise</title>
+</head>
+<body>
+  
+  <script>
+    const request = () => {
+      return new Promise((resolve, reject) => {
+        resolve('12344')
+      })
+    }
+    const queryNumber = () => {
+      return request().then(data => data)
+    }
+    const queryNumber1 = () => {
+      return request().then(data => data)
+    }
+    Promise.all([queryNumber(), queryNumber1()]).then(data => {
+      debugger
+    })
+  </script>
+</body>
+</html>

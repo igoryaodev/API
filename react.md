@@ -149,6 +149,128 @@ con
 
 ```
 
+组件初始化
+```
+// 静态类型检测
+  static propTypes = {
+    name: PropTypes.string,
+    handle: PropTypes.func
+  }
+
+  // 设置组件的默认属性
+  static defaultProps = {
+    name: '秦桥云课堂'
+  }
+
+  // 设置组件的初始化状态
+  constructor(props) {
+    super(props)
+    this.state = {
+      logo: 'https://...'
+    }
+  }
+```
+
+
+```
+  //在render()方法之前，setState不会发生重新渲染(re-render)
+  //服务端渲染(server render)中唯一调用的钩子(hook)
+  //推荐用constructor()方法代替
+  componentWillMount() { 
+    console.log('componentWillMount')
+  }
+  //组件渲染后触发,可以进行DOM相关的操作
+  //setState()方法触发重新渲染
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+  //props更新触发
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps')
+  }
+  //首次渲染时或者forceUpdate()时不会触发
+  //返回false阻止重新渲染
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate')
+    //return false
+    return true
+  }
+  //state更新触发
+  componentWillUpdate() {
+    console.log('componentWillUpdate')
+  }
+  componentDidUpdate() {
+    console.log('componentDidUpdate')
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+  }
+
+  //组件渲染
+  render() {
+    console.log('render')
+    const { test } = this.props || ''
+    return (
+      <div>test, {test} </div>
+    )
+  }
+```
+
+
+##### UI组件
+
+  1、宿主容器挂载后未更新state
+
+    首次挂载
+      componentWillMount
+      render
+      componentDidMount
+
+    props更新
+      componentWillReceiveProps
+      shouldComponentUpdate
+      componentWillUpdate
+      render
+      componentDidUpdate
+
+    卸载
+      componentWillUnmount
+
+
+  2、宿主容器挂载后又更新更新state
+    
+    挂载
+      componentWillMount
+      render
+      componentDidMount
+      componentWillReceiveProps
+      shouldComponentUpdate
+      componentWillUpdate
+      render
+      componentDidUpdate
+
+    卸载
+      componentWillUnmount
+
+
+##### 容器组件
+
+  1、未更新state
+
+    componentWillMount
+    render
+    componentDidMount
+
+  2、更新state
+
+    componentWillMount
+    render
+    componentDidMount
+    shouldComponentUpdate
+    componentWillUpdate
+    render
+    componentDidUpdate
+
 
 ### react组件
 

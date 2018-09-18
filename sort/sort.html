@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sort</title>
+</head>
+<body>
+  
+  <script>
+    let stateOld = [56, 65, 36, 12, 5, 5, 27, 37, 52]
+    let length = stateOld.length
+    for(let i = 0; i < length - 1; i++) {
+      for(let j = length - 1; j > 0;j--) {
+        if(stateOld[j] < stateOld[j-1]) {
+          // stateOld[length] = stateOld[j-1]
+          // stateOld[j-1] = stateOld[j]
+          // stateOld[j] = stateOld[length]
+          // stateOld[...stateOld[j], stateOld[j-1]...]
+          // let a = stateOld[j],
+          //     b = stateOld[j - 1]
+          // stateOld[j] = b 
+          // stateOld[j - 1] = a
+        }
+      }
+    }
+    console.log(stateOld) //[5, 5, 12, 27, 36, 37, 52, 56, 65, 56]
+  </script>
+</body>
+</html>
